@@ -1,0 +1,24 @@
+class Solution
+{
+    int visited[];
+    public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        visited=new int[V];
+        for(int i=0;i<V;i++){
+            visited[i]=0;
+        }
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        dfs(0,adj,result);
+        return result;
+    }
+    public void dfs(int src , ArrayList<ArrayList<Integer>> adj,ArrayList<Integer> result){
+        visited[src]=1;
+        result.add(src);
+        for(int ngh:adj.get(src)){
+            if(visited[ngh]!=1){
+                dfs(ngh,adj,result);
+            }
+        }
+    }
+}
